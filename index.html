@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; editor">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content='﹤model-viewer﹥ Editor - Edit your asset files for 3D & AR' />
+    <meta property="og:description"
+        content="A tool to edit glTF and glb files ✏️, and configure them to use the ﹤model-viewer﹥ 3D & AR web component 🌐" />
+
+
+    <title>xplora UN3D</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg" />
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="app/css/styles.css">
+
+    <script defer src="https://web3dsurvey.com/collector.js"></script>
+    <!-- Web animations for paper-dropdown -->
+    <script src="app/lib/beautify-html.js"></script>
+    <script src="app/lib/beautify-css.js"></script>
+    <script>
+        // Necessary hack for Redux. See: https://github.com/reduxjs/redux/pull/2910
+        window.process = {
+            env: {
+                NODE_ENV: 'production'
+            }
+        };
+    </script>
+    <script type="module" src="app/lib/space-opera.js"></script>
+</head>
+
+<body>
+    <model-editor>
+        <div class="app">
+            <div class="contenedor_cintillo">
+                <div class="cintillo">
+                    <div class="cintillo-svg"><a href="https://www.uned.ac.cr/" target="_blank"><img
+                                src="app/assets/pics/sys/uned_cintillo.svg" alt="UNED"></a></div>
+                    <div class="cintillo-tx"><a href="https://www.uned.ac.cr/" target="_blank">Universidad Estatal a
+                            Distancia, Costa Rica</a></div>
+                </div>
+            </div>
+            <div class="editor-body-root">
+                <me-tabs>
+                    <div class="privacy">
+                    </div>
+                    <me-tabbed-panel icon="download">
+                        <me-export-panel></me-export-panel>
+                        <div style="margin-bottom: 70px;"></div>
+                    </me-tabbed-panel>
+                    <me-tabbed-panel icon="sell">
+                        <me-export-panel header></me-export-panel>
+                        <me-animation-controls></me-animation-controls>
+                        <me-hotspot-panel></me-hotspot-panel>
+                    </me-tabbed-panel>
+                    <me-tabbed-panel icon="video_camera_back">
+                        <me-export-panel header></me-export-panel>
+                        <me-camera-settings></me-camera-settings>
+                        <me-ibl-selector></me-ibl-selector>
+                    </me-tabbed-panel>
+                    <!--
+                    <me-tabbed-panel icon="color_lens">
+                        <me-materials-panel></me-materials-panel>
+                    </me-tabbed-panel>
+                    -->
+                    <me-tabbed-panel icon="data_object">
+                        <me-inspector-panel></me-inspector-panel>
+                    </me-tabbed-panel>
+                    <me-tabbed-panel icon="help">
+                        <div class="credits">
+                            <p>
+                            <h1>xplora UN3D</h1>
+                            <hr><br>
+                            Universidad Estatal a Distancia (UNED)<br>
+                            Dirección de Producción de Materiales Didácticos, DPMD<br>
+                            Programa de Producción Electrónica Multimedial, PEM<br>
+                            Software adaptado por Deiver Herrera Sánchez<br>
+                            Versión: v2025.03.05<br><br>
+                            <div class="license-box">
+                                Software basado en el proyecto de código abierto Google <a
+                                    href="https://modelviewer.dev/" target="_blank"
+                                    class="inner-container links">&lt;model-viewer&gt;
+                                </a>, el cual se distribuye bajo la licencia de <a class="inner-container links"
+                                    href="https://www.apache.org/licenses/LICENSE-2.0" title="Licencia de Apache 2.0"
+                                    target="_blank">Apache Versión 2.0</a>.<br><br>
+                                Este proyecto contiene modificaciones al código original. Las modificaciones incluyen:
+                                traducción al español, cambio en estilos e identidad gráfica, deshabilitación y
+                                adaptación de algunas funcionalidades, enumeración de etiquetado y código exportable
+                                modificado.
+                            </div>
+                            </p>
+                            <br>
+                            <h2>DEMO</h2>
+                            <hr><br>
+                            <b>Ejemplo: </b><a href="demo/index.html" target="_blank" class="inner-container links"
+                                title="Ejemplo">
+                                Modelo 3D Jeep con Etiquetas [↗]
+                            </a><br><br>
+                            <a href="demo/demo.zip" class="inner-container links" title="Descargar" download>Descargar
+                                Demo [ ↓ ]</a><br>
+                        </div>
+                    </me-tabbed-panel>
+                </me-tabs>
+                <div class="mvContainer">
+                    <model-viewer-preview id="editing_adapter">
+                    </model-viewer-preview>
+                </div>
+            </div>
+        </div>
+    </model-editor>
+
+    <!-- Splash screen -->
+    <div id="splash">
+        <div id="logo"></div>
+        <p id="title-splash">xplora UN3D</p>
+    </div>
+</body>

@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+15&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --expandable-section-background: #021135;
+  --expandable-section-text: #021135;
+  --text-on-expandable-background: #f5f5f5;
+  --number-input-background: #212121;
+}
+
+body {
+  margin: 0;
+  font-family: "Chakra Petch", sans-serif !important;
+  font-style: normal;
+  overflow: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  height: 48px;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.links {
+  color: #fbb92a;
+}
+
+/* Container for renderer (left) and tabs (right). */
+.editor-body-root {
+  display: flex;
+  flex: auto;
+  /* Grows to fill space under header */
+  height: 0;
+}
+
+.mvContainer {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+model-viewer-preview {
+  height: 100%;
+}
+
+me-tabs {
+  background-color: #021135;
+  /* GOOGLE_GREY_900 */
+  padding: 0;
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
+  padding-bottom: 50px;
+}
+
+me-tabs a {
+  color: #0000a0;
+  /* GOOGLE_GREY_300, but.. bluer */
+}
+
+me-tabbed-panel {
+  max-height: calc(100vh - 155px);
+  overflow-y: auto;
+  display: block;
+}
+
+.privacy {
+  color: #333;
+  padding: 5px 16px;
+  position: absolute;
+  bottom: 0;
+  font-size: x-small;
+  z-index: 10;
+  right: 0px;
+  display: none;
+}
+
+.credits {
+  padding: 10px;
+  font-size: small;
+}
+
+.license-box {
+  padding: 4px;
+  font-size: small;
+  background-color: #010c23;
+  border: 1px solid #e2e2e2;
+}
+
+@media only screen and (max-height: 600px) {
+  .privacy {
+    z-index: -1;
+  }
+}
+
+.privacy-link {
+  color: #333;
+}
+
+/*** Scroll Bar ***/
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0d3996 #d5d5d5;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #212529;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #0d3996;
+  border-radius: 20px;
+  border: 3px solid #d5d5d5;
+}
+
+/* Cintillo UNED */
+
+.contenedor_cintillo {
+  background: #00519e;
+  width: 100%;
+  min-height: 40px;
+  position: relative;
+  z-index: 100;
+  border-bottom: 5px solid #fbb92a;
+}
+.cintillo {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.cintillo-svg {
+  float: left;
+  height: 20px;
+  margin-right: 10px;
+  padding-top: 8px;
+  width: 80px;
+}
+.cintillo-tx {
+  margin-bottom: 10px;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  padding-top: 8px;
+}
+.cintillo-tx a {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .cintillo-svg {
+    margin-left: 20px;
+    float: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .cintillo-tx {
+    display: none;
+  }
+}
+
+#btn-back-to-top {
+  position: fixed;
+  bottom: 70px;
+  right: 30px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  border: none;
+}
+
+#splash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  animation: fadeOut 3s forwards;
+  z-index: 9999;
+  flex-direction: column  ;
+}
+
+#logo {
+  width: 150px;
+  height: 150px;
+  background-image: url('../assets/icons/logo.svg'); /* Ruta de tu logo */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#title-splash {
+  margin-top: 20px;
+  font-family: "Jersey 15", sans-serif;
+  font-weight: 400;
+  font-size: 3.3em;
+  color: #646464;
+}
+
+/* Ocultar el splash después de 3 segundos */
+/* Animación para desvanecer el splash */
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+  75% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      visibility: hidden;
+  }
+}

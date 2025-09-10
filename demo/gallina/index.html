@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>&lt;model-viewer&gt; template</title>
+  <meta charset="utf-8">
+  <meta name="description" content="&lt;model-viewer&gt; template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" href="./styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- <model-viewer> HTML element -->
+  <model-viewer src="gallina_lite.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+    tone-mapping="neutral" poster="poster.webp" shadow-intensity="0" autoplay camera-orbit="143.2deg 83.67deg 1052m"
+    field-of-view="30deg">
+    <button class="Hotspot" slot="hotspot-1" data-surface="4 0 22 237 17 0.098 0.778 0.124"
+      data-visibility-attribute="visible"><span class="HotspotNumber">1</span>
+      <div class="HotspotAnnotation">Hígado</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-surface="3 0 581 588 594 0.058 0.217 0.725"
+      data-visibility-attribute="visible"><span class="HotspotNumber">2</span>
+      <div class="HotspotAnnotation">Entrañas</div>
+    </button><button class="Hotspot" slot="hotspot-3" data-surface="0 0 11 12 14 0.017 0.521 0.462"
+      data-visibility-attribute="visible"><span class="HotspotNumber">3</span>
+      <div class="HotspotAnnotation">Pulmón</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-surface="2 0 4006 4032 3517 0.101 0.411 0.487"
+      data-visibility-attribute="visible"><span class="HotspotNumber">4</span>
+      <div class="HotspotAnnotation">Buche</div>
+    </button><button class="Hotspot" slot="hotspot-5" data-surface="2 0 3150 862 324 0.728 0.243 0.030"
+      data-visibility-attribute="visible"><span class="HotspotNumber">5</span>
+      <div class="HotspotAnnotation">Cloaca</div>
+    </button><button class="Hotspot" slot="hotspot-6" data-surface="2 0 3684 3621 3691 0.485 0.288 0.227"
+      data-visibility-attribute="visible"><span class="HotspotNumber">6</span>
+      <div class="HotspotAnnotation">Corazón</div>
+    </button><button class="Hotspot" slot="hotspot-7" data-surface="2 0 264 257 255 0.186 0.778 0.036"
+      data-visibility-attribute="visible"><span class="HotspotNumber">7</span>
+      <div class="HotspotAnnotation">Oviducto</div>
+    </button><button class="Hotspot" slot="hotspot-8" data-surface="2 0 633 786 634 0.636 0.084 0.280"
+      data-visibility-attribute="visible"><span class="HotspotNumber">8</span>
+      <div class="HotspotAnnotation">Riñón</div>
+    </button><button class="Hotspot" slot="hotspot-9" data-surface="2 0 472 659 661 0.754 0.220 0.026"
+      data-visibility-attribute="visible"><span class="HotspotNumber">9</span>
+      <div class="HotspotAnnotation">Ovarios</div>
+    </button><button class="Hotspot" slot="hotspot-10" data-surface="2 0 388 392 390 0.171 0.607 0.222"
+      data-visibility-attribute="visible"><span class="HotspotNumber">10</span>
+      <div class="HotspotAnnotation">Intestinos</div>
+    </button>
+    <div class="progress-bar" slot="progress-bar">
+      <div class="update-bar"></div>
+    </div>
+  </model-viewer>
+  <script src="script.js"></script>
+  <!-- Loads <model-viewer> for browsers: -->
+  <script type="module">
+    const modelViewer = document.querySelector("model-viewer");
+    const annotationClicked = (annotation) => {
+      let dataset = annotation.dataset;
+      modelViewer.cameraTarget = dataset.position;
+      modelViewer.fieldOfView = '5deg';
+      modelViewer.querySelectorAll('.Hotspot').forEach((hotspot) => {
+        hotspot.children[1].style.display = "none";
+      });
+      annotation.children[1].style.display = 'block';
+    }
+    modelViewer.querySelectorAll('button').forEach((hotspot) => {
+      hotspot.children[1].style.display = "none"; // Etiquetas ocultas por defecto
+      hotspot.addEventListener('click', () => annotationClicked(hotspot));
+    });
+  </script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</body>
+
+</html>

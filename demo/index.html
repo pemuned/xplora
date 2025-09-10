@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>xplora UN3D - DEMO</title>
+  <meta charset="utf-8">
+  <meta name="description" content="&lt;model-viewer&gt; template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/svg+xml" href="../favicon.svg" />
+  <link type="text/css" href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- <model-viewer> HTML element -->
+  <model-viewer src="jeep.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral"
+    poster="poster.webp" shadow-intensity="1">
+    <button class="Hotspot" slot="hotspot-1" data-position="-1.046631017543426m 9.583315853788708m 2.2555800569134092m"
+      data-normal="0m 0.4660070177349937m 0.8847810234299431m" data-visibility-attribute="visible"
+      data-title="Parabrisas" data-description="Texto para la etiqueta 1"><span class="HotspotNumber">1</span>
+      <div class="HotspotAnnotation">Parabrisas</div>
+    </button><button class="Hotspot" slot="hotspot-2"
+      data-position="-4.662686365875025m 3.074714275546139m -4.951392184288338m"
+      data-normal="0m 0.30901701803936826m 0.9510565086061169m" data-visibility-attribute="visible" data-title="Llanta"
+      data-description="Texto para la etiqueta 2"><span class="HotspotNumber">2</span>
+      <div class="HotspotAnnotation">Llanta</div>
+    </button><button class="Hotspot" slot="hotspot-3"
+      data-position="1.4588307688419704m 9.253946135044291m -13.096364974975586m" data-normal="0m 0m -1m"
+      data-visibility-attribute="visible" data-title="Repuesto" data-description="Texto para la etiqueta 3"><span
+        class="HotspotNumber">3</span>
+      <div class="HotspotAnnotation">Repuesto</div>
+    </button><button class="Hotspot" slot="hotspot-4"
+      data-position="4.223773956298835m 6.168084593023071m 1.0985471088644783m" data-normal="1m 0m 0m"
+      data-visibility-attribute="visible" data-title="Puerta" data-description="Texto para la etiqueta 4"><span
+        class="HotspotNumber">4</span>
+      <div class="HotspotAnnotation">Puerta</div>
+    </button><button class="Hotspot" slot="hotspot-5"
+      data-position="0.14950470573724672m 5.817591605579192m 11.043992437199293m"
+      data-normal="0m 0.08115156625113557m 0.9967017724951569m" data-visibility-attribute="visible"
+      data-title="Parrilla frontal" data-description="Texto para la etiqueta 5"><span class="HotspotNumber">5</span>
+      <div class="HotspotAnnotation">Parrilla frontal</div>
+    </button><button class="Hotspot" slot="hotspot-6"
+      data-position="-1.7482407813810568m 3.824723311322469m 12.628729500436492m"
+      data-normal="0m -0.0005489623748405861m 0.9999998493201442m" data-visibility-attribute="visible"
+      data-title="Bumper" data-description="Texto para la etiqueta 6"><span class="HotspotNumber">6</span>
+      <div class="HotspotAnnotation">Bumper</div>
+    </button><button class="Hotspot" slot="hotspot-7"
+      data-position="-3.6898665970734186m 9.862142435580964m -7.4930812975828545m"
+      data-normal="-0.9836983768732886m 0.1797291334682812m 0.005911169055134555m" data-visibility-attribute="visible"
+      data-title="Ventana" data-description="Texto para la etiqueta 7"><span class="HotspotNumber">7</span>
+      <div class="HotspotAnnotation">Ventana</div>
+    </button>
+
+    <div id="description-box">
+      <header>
+        <h1 id="title">Título</h1>
+      </header>
+      <p id="description">
+        Descripción de la etiqueta del elemento 3D
+      </p>
+      <footer>
+        <button id="btn-close" type="reset">Cerrar</button>
+      </footer>
+    </div>
+
+    <!-- Toggle Annotations -->
+    <div id="toggle-annotations-box">
+      <input type="checkbox" id="toggle-annotations" class="toggle-annotations">
+      <label for="toggle-annotations">Mostrar etiquetas</label>
+    </div>
+
+    <div class="progress-bar hide" slot="progress-bar">
+      <div class="update-bar"></div>
+    </div>
+
+
+  </model-viewer>
+  <!-- Loads <model-viewer> for browsers: -->
+  <script type="module">
+    const modelViewer = document.querySelector("model-viewer");
+    const closeButton = document.getElementById("btn-close");
+    const dialogBox = document.getElementById("description-box");
+    const title = document.getElementById("title");
+    const description = document.getElementById("description");
+    document.querySelector('.progress-bar').classList.remove('hide');
+
+    const annotationClicked = (annotation) => {
+      let dataset = annotation.dataset;
+      modelViewer.cameraTarget = dataset.position;
+      modelViewer.fieldOfView = '5deg';
+      dialogBox.style.display = "block";
+      title.innerHTML = dataset.title;
+      description.innerHTML = dataset.description;
+
+      modelViewer.querySelectorAll('.Hotspot').forEach((hotspot) => {
+        hotspot.children[1].style.display = "none";
+      });
+
+      annotation.children[1].style.display = "block";
+    }
+
+    modelViewer.querySelectorAll('.Hotspot').forEach((hotspot) => {
+      hotspot.children[1].style.display = "none"; // Etiquetas ocultas por defecto
+      hotspot.addEventListener('click', () => annotationClicked(hotspot));
+    });
+
+    closeButton.addEventListener("click", function () {
+      dialogBox.style.display = "none";
+    });
+
+    // Toggle Annotations
+    const toggleAnnotations = document.getElementById("toggle-annotations");
+    toggleAnnotations.addEventListener("change", function () {
+      modelViewer.querySelectorAll('.Hotspot').forEach((hotspot) => {
+        if (toggleAnnotations.checked) {
+          hotspot.children[1].style.display = "block";
+        } else {
+          hotspot.children[1].style.display = "none";
+          dialogBox.style.display = "none";
+        }
+      });
+    });
+
+  </script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</body>
+
+</html>

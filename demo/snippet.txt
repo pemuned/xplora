@@ -1,0 +1,17 @@
+<model-viewer src="jeep.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="1">
+    <button class="Hotspot" slot="hotspot-1" data-position="-1.046631017543426m 9.583315853788708m 2.2555800569134092m" data-normal="0m 0.4660070177349937m 0.8847810234299431m" data-visibility-attribute="visible"><span class="HotspotNumber">1</span>
+        <div class="HotspotAnnotation">Parabrisas</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-position="-4.662686365875025m 3.074714275546139m -4.951392184288338m" data-normal="0m 0.30901701803936826m 0.9510565086061169m" data-visibility-attribute="visible"><span class="HotspotNumber">2</span>
+        <div class="HotspotAnnotation">Llanta</div>
+    </button><button class="Hotspot" slot="hotspot-3" data-position="1.4588307688419704m 9.253946135044291m -13.096364974975586m" data-normal="0m 0m -1m" data-visibility-attribute="visible"><span class="HotspotNumber">3</span>
+        <div class="HotspotAnnotation">Repuesto</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-position="4.223773956298835m 6.168084593023071m 1.0985471088644783m" data-normal="1m 0m 0m" data-visibility-attribute="visible"><span class="HotspotNumber">4</span>
+        <div class="HotspotAnnotation">Puerta</div>
+    </button><button class="Hotspot" slot="hotspot-5" data-position="0.14950470573724672m 5.817591605579192m 11.043992437199293m" data-normal="0m 0.08115156625113557m 0.9967017724951569m" data-visibility-attribute="visible"><span class="HotspotNumber">5</span>
+        <div class="HotspotAnnotation">Parrilla frontal</div>
+    </button><button class="Hotspot" slot="hotspot-6" data-position="-1.7482407813810568m 3.824723311322469m 12.628729500436492m" data-normal="0m -0.0005489623748405861m 0.9999998493201442m" data-visibility-attribute="visible"><span class="HotspotNumber">6</span>
+        <div class="HotspotAnnotation">Bumper</div>
+    </button><button class="Hotspot" slot="hotspot-7" data-position="-3.6898665970734186m 9.862142435580964m -7.4930812975828545m" data-normal="-0.9836983768732886m 0.1797291334682812m 0.005911169055134555m" data-visibility-attribute="visible"><span class="HotspotNumber">7</span>
+        <div class="HotspotAnnotation">Ventana</div>
+    </button>
+</model-viewer>
